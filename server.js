@@ -102,7 +102,32 @@ app.get('/api/post/:id', (req, res) => {
     // trovo il post con il mio id corrispondente
     const post = foodPosts.find(item => item.id === parseInt(id));
     console.log(post);
+    // condizione nel caso in cui non si trovi nulla undefined
+    if (!post) {
+        res.status(404).json({
+            error: true,
+            message: 'Resource not found'
+        })
+    }
+    res.json(post);
+})
 
-    // condizione nel caso in cui non si trovi nulla unde
+// store (C)
+app.post('/api/post', (req, res) => {
+    res.send('Create e new post')
+})
 
+// update (U)
+app.put('/api/post/:id', (req, res) => {
+    res.send('Update the entire single post with ID: ' + req.params.id)
+})
+
+// modify (U)
+app.patch('/api/post/:id', (req, res) => {
+    res.send('Partial update for the single post with ID: ' + req.params.id)
+})
+
+// destroy (D)
+app.delete('/api/post/:id', (req, res) => {
+    res.send('Delete the single post with ID: ' + req.params.id)
 })
