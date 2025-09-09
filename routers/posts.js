@@ -46,7 +46,7 @@ const foodPosts = [
 // IMPORTANTE PER CONVEZIONE METTIAMO SEMPRE COME PERCOSO PRIMA API E DOPO IL NOME DELLA MIA DIRECTORY CHE STO SVILUPPANDO
 
 // index (R)
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     // console.log(req);
     // res.send('Show a list of Posts');
 
@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 })
 
 // show (R)
-app.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     // res.send('Show the single post with ID: ' + req.params.id)
 
     // prendo dalla mia richiesta i dato dell'->id 
@@ -66,31 +66,31 @@ app.get('/:id', (req, res) => {
     console.log(post);
     // condizione nel caso in cui non si trovi nulla undefined
     if (!post) {
-        res.status(404).json({
+        return res.status(404).json({
             error: true,
             message: 'Resource not found'
         })
     }
-    res.json("prova");
+    res.json(post);
 })
 
 // store (C)
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
     res.send('Create e new post')
 })
 
 // update (U)
-app.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     res.send('Update the entire single post with ID: ' + req.params.id)
 })
 
 // modify (U)
-app.patch('/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
     res.send('Partial update for the single post with ID: ' + req.params.id)
 })
 
 // destroy (D)
-app.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     res.send('Delete the single post with ID: ' + req.params.id)
 })
 
