@@ -87,9 +87,11 @@ app.get('/', (req, res) => {
 
 // index (R)
 app.get('/api/post', (req, res) => {
+    // console.log(req);
     // res.send('Show a list of Posts');
 
     res.json(foodPosts);
+
 })
 
 // show (R)
@@ -109,7 +111,7 @@ app.get('/api/post/:id', (req, res) => {
             message: 'Resource not found'
         })
     }
-    res.json(post);
+    res.json("prova");
 })
 
 // store (C)
